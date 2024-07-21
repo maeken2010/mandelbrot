@@ -1,23 +1,6 @@
 defmodule Mandelbrot do
-  @moduledoc """
-  Documentation for `Mandelbrot`.
-  """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Mandelbrot.hello()
-      :world
-
-  """
-
-  def hello do
-    :world
-  end
-
-  def main do
+  def list_cood do
     size = 4
     pixel = 100
 
