@@ -7,7 +7,7 @@ defmodule Mandelbrot do
     c_list = for x <- 0..pixel-1, y <- 0..pixel-1 do
       a = x * size / pixel - size / 2
       b = y * size / pixel - size / 2
-      c = Complex.new(b, a)
+      c = Complex.new(a, b)
       {{x, y}, c}
     end
 
