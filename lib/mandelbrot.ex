@@ -1,8 +1,8 @@
 defmodule Mandelbrot do
 
-  def list_cood do
-    size = 4
-    pixel = 100
+  def list_cood(opts \\ []) do
+    size = Keyword.get(opts, :size, 4)
+    pixel = Keyword.get(opts, :pixel, 100)
 
     c_list = for x <- 0..pixel-1, y <- 0..pixel-1 do
       a = x * size / pixel - size / 2
