@@ -3,10 +3,11 @@ defmodule Mandelbrot do
   def list_cood(opts \\ []) do
     size = Keyword.get(opts, :size, 4)
     pixel = Keyword.get(opts, :pixel, 100)
+    (ca, cb) = Keyword.get(opts, :center, (0, 0))
 
     c_list = for x <- 0..pixel-1, y <- 0..pixel-1 do
-      a = x * size / pixel - size / 2
-      b = y * size / pixel - size / 2
+      a = x * size / pixel - size / 2 + ca
+      b = y * size / pixel - size / 2 + cb
       c = Complex.new(a, b)
       {{x, y}, c}
     end
