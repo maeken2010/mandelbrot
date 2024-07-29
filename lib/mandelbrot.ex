@@ -21,7 +21,7 @@ defmodule Mandelbrot do
     draw_f(c, init_z, 0)
   end
 
-  defp draw_f(_, _, n) when n > 50 do
+  defp draw_f(_, _, n) when n > 1000 do
     false
   end
 
