@@ -12,7 +12,14 @@ defmodule Mandelbrot do
       {{x, y}, c}
     end
 
-    for {{x, y}, c} <- c_list, draw?(c), do: {x, y}
+    c_list
+    |> Enum.map(fn {cood, c} -> Task.async(fn -> draw_or_nil(cood, c) end) end)
+    |> Enum.map(fn t -> Task.await(t) end)
+    |> Enum.filter(&(&1))
+  end
+
+  def draw_or_nil({x, y}, c) do
+    if draw?(c), do: {x, y}, else: nil
   end
 
   def draw?(c) do
@@ -35,5 +42,4 @@ defmodule Mandelbrot do
     end
   end
 end
-
 
