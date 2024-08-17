@@ -1,5 +1,26 @@
 defmodule Mandelbrot do
 
+  def write_png() do
+    opts = [pixel: 480, size: 0.004, center: {-0.8556675420381044, 0.20850513561703377}]
+    image = to_image(opts)
+
+    IO.puts(Image.get_concurrency)
+
+    Image.write(image, "hoge.png")
+  end
+
+  def to_image(opts \\ []) do
+    pixel = Keyword.get(opts, :pixel, 100)
+
+    l = list_cood(opts)
+
+    Enum.reduce(l, Image.new!(pixel, pixel),
+      fn {x, y}, img ->
+        Image.Draw.point!(img, x, y, color: :white)
+      end
+    )
+  end
+
   def list_cood(opts \\ []) do
     size = Keyword.get(opts, :size, 4)
     pixel = Keyword.get(opts, :pixel, 100)
