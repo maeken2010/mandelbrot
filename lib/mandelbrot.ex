@@ -13,9 +13,9 @@ defmodule Mandelbrot do
     end
 
     c_list
-    |> Enum.map(fn {cood, c} -> Task.async(fn -> draw_or_nil(cood, c) end) end)
-    |> Enum.map(fn t -> Task.await(t) end)
-    |> Enum.filter(&(&1))
+      |> Enum.map(fn {cood, c} -> Task.async(fn -> draw_or_nil(cood, c) end) end)
+      |> Enum.map(fn t -> Task.await(t) end)
+      |> Enum.filter(&(&1))
   end
 
   def draw_or_nil({x, y}, c) do
